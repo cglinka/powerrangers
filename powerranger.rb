@@ -1,4 +1,17 @@
+# Fight Module
+# holds punch and fight_scene methods
 module Fight
+
+  # Allows a PowerRanger or EvilNinja to punch another person.
+  #
+  # person  - The Person Object to be 'punched'.
+  #
+  # Examples
+  #   
+  #   powerranger1.punch(ninja1)
+  #   # => "Power Ranger 1 punched Ninja 1"
+  #
+  # Returns a String declaring who punched whom.
   def punch(person)
     person.scream
     if @strength > 5
@@ -9,6 +22,22 @@ module Fight
     return "#{@name} punched #{person.name}!"
   end
 
+  # Runs a fight scene between two Person objects, two PowerRanger objects,
+  # and two EvilNinja objects.
+  #
+  # p1  - The first Person Object in the fight.
+  # p2  - The second Person Object in the fight.
+  # r1  - the first PowerRanger Object in the fight.
+  # r2  - the second PowerRanger Object in the fight.
+  # n1  - the first PowerRanger Object in the fight.
+  # n2  - the second PowerRanger Object in the fight.
+  #
+  # Examples
+  #   
+  #   powerranger1.fight_scene(person1, person2, powerranger1, powerranger1, ninja1, ninja2)
+  #   # => 
+  #
+  # Returns several Strings declaring the fight actions.
   def fight_scene(p1, p2, r1, r2, n1, n2)
     puts p1.scream
     puts r1.punch(n1)
