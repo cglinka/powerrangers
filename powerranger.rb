@@ -44,10 +44,32 @@ class PowerRanger < Person
 
   def rest
     @strength = @strength + 1
+    return "#{@name} increased their strength!"
   end
 end
 
 class EvilNinja < Person
+  def initialize(name, strength, evilness)
+    super(name)
+    @strength = strength
+    @evilness = evilness
+  end
+
+  def punch(person)
+    person.scream
+    if @strength > 5
+      person.run
+      person.caffeine_level -= @strength
+    end
+    @caffeine_level -= (@strength/2)
+    return "#{@name} punched #{person.name}!"
+  end
+
+  def cause_mayhem(person)
+    person.caffeine_level = 0
+    return "Oh no! #{@name} caused mayhem! #{person.name} has no more caffeine!"
+  end
+
 end
 
 #-----------TESTING Person CLASS-----------#
@@ -60,3 +82,10 @@ puts bob.drink_coffee(3)
 jane = PowerRanger.new("Jane", "Yellow", 10)
 puts jane.scream
 puts jane.punch(bob)
+puts jane.rest
+
+#-----------TESTING EvilNinja CLASS-----------#
+jack = EvilNinja.new("Jack", 10, 5)
+puts jack.scream
+puts jack.punch(jane)
+puts jack.cause_mayhem(bob)
