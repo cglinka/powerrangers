@@ -22,10 +22,6 @@ end
 
 class PowerRanger < Person
 
-  # def self.use_megazord(person)
-    
-  # end
-
   def initialize(name, color, strength)
     super(name)
     @color = color
@@ -46,6 +42,14 @@ class PowerRanger < Person
     @strength = @strength + 1
     return "#{@name} increased their strength!"
   end
+
+  def use_megazord(person)
+    person.scream
+    person.run
+    person.caffeine_level -= 5000
+    @caffeine_level -= 2500
+  end
+
 end
 
 class EvilNinja < Person
