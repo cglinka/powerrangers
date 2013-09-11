@@ -8,6 +8,14 @@ module Fight
     @caffeine_level -= (@strength/2)
     return "#{@name} punched #{person.name}!"
   end
+
+  def fight_scene(p1, p2, r1, r2, n1, n2)
+    puts p1.scream
+    puts r1.punch(n1)
+    puts n1.punch(p2)
+    puts p2.rest
+    puts n2.punch(p2)
+  end
 end
 
 class Person
@@ -47,7 +55,7 @@ class PowerRanger < Person
     return "#{@name} increased their strength!"
   end
 
-  def use_megazord(person)
+  def self.use_megazord(person)
     person.scream
     person.run
     person.caffeine_level -= 5000
@@ -71,9 +79,6 @@ class EvilNinja < Person
     return "Oh no! #{@name} caused mayhem! #{person.name} has no more caffeine!"
   end
 
-  def fight_scene(p1, p2, r1, r2, n1, n2)
-  end
-
 end
 
 
@@ -94,3 +99,11 @@ jack = EvilNinja.new("Jack", 10, 5)
 puts jack.scream
 puts jack.punch(jane)
 puts jack.cause_mayhem(bob)
+
+#-----------TESTING Fight MODULE-----------#
+bob2 = Person.new('Bob2')
+jane2 = PowerRanger.new("Jane2", "Green", 10)
+jack2 = EvilNinja.new("Jack2", 10, 5)
+
+puts "Begin Fight Scene"
+puts jack.fight_scene(bob, bob2, jane, jane2, jack, jack2)
