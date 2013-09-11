@@ -1,3 +1,15 @@
+module Fight
+  def punch(person)
+    person.scream
+    if @strength > 5
+      person.run
+      person.caffeine_level -= @strength
+    end
+    @caffeine_level -= (@strength/2)
+    return "#{@name} punched #{person.name}!"
+  end
+end
+
 class Person
   attr_accessor :name, :caffeine_level
 
@@ -22,20 +34,12 @@ end
 
 class PowerRanger < Person
 
+  include Fight
+
   def initialize(name, color, strength)
     super(name)
     @color = color
     @strength = strength
-  end
-
-  def punch(person)
-    person.scream
-    if @strength > 5
-      person.run
-      person.caffeine_level -= @strength
-    end
-    @caffeine_level -= (@strength/2)
-    return "#{@name} punched #{person.name}!"
   end
 
   def rest
@@ -53,20 +57,13 @@ class PowerRanger < Person
 end
 
 class EvilNinja < Person
+
+  include Fight
+
   def initialize(name, strength, evilness)
     super(name)
     @strength = strength
     @evilness = evilness
-  end
-
-  def punch(person)
-    person.scream
-    if @strength > 5
-      person.run
-      person.caffeine_level -= @strength
-    end
-    @caffeine_level -= (@strength/2)
-    return "#{@name} punched #{person.name}!"
   end
 
   def cause_mayhem(person)
@@ -74,7 +71,11 @@ class EvilNinja < Person
     return "Oh no! #{@name} caused mayhem! #{person.name} has no more caffeine!"
   end
 
+  def fight_scene(p1, p2, r1, r2, n1, n2)
+  end
+
 end
+
 
 #-----------TESTING Person CLASS-----------#
 bob = Person.new('Bob')
